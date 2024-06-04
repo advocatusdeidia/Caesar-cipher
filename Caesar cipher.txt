@@ -1,0 +1,27 @@
+def caesar_cipher(text, shift):
+    result = ""
+    for char in text:
+        if char.isalpha():
+            if char.islower():
+                result += chr((ord(char) - 97 + shift) % 26 + 97)
+            else:
+                result += chr((ord(char) - 65 + shift) % 26 + 65)
+        else:
+            result += char
+    return result
+
+def caesar_decipher(text, shift):
+    return caesar_cipher(text, -shift)
+
+def main():
+    text = "Hello, World!"
+    shift = 5
+    encrypted_text = caesar_cipher(text, shift)
+    decrypted_text = caesar_decipher(encrypted_text, shift)
+    
+    print("Original Text:", text)
+    print("Encrypted Text:", encrypted_text)
+    print("Decrypted Text:", decrypted_text)
+
+if __name__ == "__main__":
+    main()
